@@ -1,10 +1,8 @@
 import { FC, useCallback, useState } from "react";
 import "./App.css";
-import reactLogo from "./assets/react.svg";
 import { StrongEmitter } from "./models/StrongEmitter";
 import { useStrongEmitter } from "./models/useStrongEmitter";
 import { Listener } from "./types";
-import viteLogo from "/vite.svg";
 
 type EmitterArg = { value: number };
 
@@ -28,14 +26,6 @@ const App: FC = () => {
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noreferrer">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
