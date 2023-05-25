@@ -1,28 +1,30 @@
-import { FC, useEffect, useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+import { FC, useCallback, useState } from "react";
 import "./App.css";
+import reactLogo from "./assets/react.svg";
 import { StrongEmitter } from "./models/StrongEmitter";
+import { useStrongEmitter } from "./models/useStrongEmitter";
+import { Listener } from "./types";
+import viteLogo from "/vite.svg";
 
 type EmitterArg = { value: number };
 
-const strongEmitter = StrongEmitter.create<EmitterArg>();
+const numberEmitter = StrongEmitter.create<EmitterArg>();
 
 const App: FC = () => {
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    const cb = (arg: EmitterArg) => {
-      console.log(`Arg received from emitter ${arg}`);
+  const cb = useCallback<Listener<EmitterArg>>(
+    (arg) => {
+      console.log("Arg received from event emitter ", arg);
       const { value } = arg;
-      console.log(`Count (${count}) + Arg (${value}) =  ${count + value}`);
-    };
-    strongEmitter.on(cb);
+      console.log(
+        `Count state (${count}) + arg value (${value}) = ${count + value}`
+      );
+    },
+    [count]
+  );
 
-    return () => {
-      strongEmitter.off(cb);
-    };
-  }, [count]);
+  useStrongEmitter(numberEmitter, cb);
 
   return (
     <>
@@ -38,7 +40,7 @@ const App: FC = () => {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <button onClick={() => strongEmitter.emit({ value: Math.random() })}>
+        <button onClick={() => numberEmitter.emit({ value: Math.random() })}>
           Emit event
         </button>
         <p>
