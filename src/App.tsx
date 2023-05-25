@@ -1,7 +1,7 @@
 import { FC, useCallback, useState } from "react";
 import "./App.css";
 import { StrongEmitter } from "./models/StrongEmitter";
-import { useStrongEmitter } from "./models/useStrongEmitter";
+import { useStrongEmitter } from "./hooks/useStrongEmitter";
 import { Listener } from "./types";
 
 type EmitterArg = { value: number };
@@ -36,13 +36,7 @@ const App: FC = () => {
         <button onClick={() => numberEmitter.emit({ value: 20 })}>
           Emit value 20 with StrongEmitter
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 };

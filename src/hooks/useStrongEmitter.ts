@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Listener } from "../types";
-import { StrongEmitter } from "./StrongEmitter";
+import { StrongEmitter } from "../models/StrongEmitter";
 
 export const useStrongEmitter = <T>(
   emitter: StrongEmitter<T>,
