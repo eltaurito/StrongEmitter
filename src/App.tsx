@@ -40,8 +40,11 @@ const App: FC = () => {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <button onClick={() => numberEmitter.emit({ value: Math.random() })}>
-          Emit event
+        <button onClick={() => numberEmitter.emit({ value: 10 })}>
+          Emit value 10 with StrongEmitter
+        </button>
+        <button onClick={() => numberEmitter.emit({ value: 20 })}>
+          Emit value 20 with StrongEmitter
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
