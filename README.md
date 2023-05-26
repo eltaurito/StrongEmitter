@@ -86,3 +86,11 @@ const App: FC = () => {
 
 ```
 
+## Next steps
+
+- Single bus for multi event integration
+  - StrongEmitterMulti class integration   
+  - React hook integration
+- offAll method integration
+- Npm package publication
+- Testing integration
