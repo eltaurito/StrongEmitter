@@ -6,14 +6,13 @@ event-driven programming in TypeScript. It provides a reliable mechanism for emi
 
 ### Basic Typescript
 
-``` typescript
+```typescript
 import { StrongEmitter } from "./models/StrongEmitter";
 import { useStrongEmitter } from "./models/useStrongEmitter";
 import { Listener } from "./types";
-``` 
+```
 
-``` typescript
-
+```typescript
 type EmitterArg = { value: number };
 
 const numberEmitter = StrongEmitter.create<EmitterArg>();
@@ -37,17 +36,15 @@ numberEmitter.off(callback2);
 numberEmitter.emit({ value: 20 });
 
 // Received arg on callback1: 10
-
 ```
 
 ### React hook
 
-``` typescript
+```typescript
 import { useStrongEmitter } from "./hooks/useStrongEmitter";
+```
 
-``` 
-
-``` typescript
+```typescript
 type EmitterArg = { value: number };
 
 const numberEmitter = StrongEmitter.create<EmitterArg>();
@@ -89,8 +86,9 @@ const App: FC = () => {
 ## Next steps
 
 - Single bus for multi event integration
-  - StrongEmitterMulti class integration   
+  - StrongEmitterMulti class integration
   - React hook integration
-- offAll method integration
+- ✅ offAll method integration
+- ✅ once method integration
 - Npm package publication
 - Testing integration
