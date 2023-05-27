@@ -15,6 +15,9 @@ export class StrongEmitter<T> implements EmitterStructure<T> {
   emit(payload: T) {
     this.listeners.forEach((listener) => listener(payload));
   }
+  offAll() {
+    this.listeners = [];
+  }
 
   static create<T>(): StrongEmitter<T> {
     return new StrongEmitter<T>();
