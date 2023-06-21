@@ -23,8 +23,8 @@ describe("StrongEmitter", () => {
 
     numberEmitter.emit(1);
 
-    expect(cb1).toBeCalled();
-    expect(cb2).toBeCalled();
+    expect(cb1).toBeCalledWith(1);
+    expect(cb2).toBeCalledWith(1);
   });
 
   it("should call two callbacks then only one on event emit", () => {
@@ -73,5 +73,22 @@ describe("StrongEmitter", () => {
     numberEmitter.emit(1);
 
     expect(cb1).toBeCalledTimes(1);
+  });
+
+  it("should receive the correct payload", () => {
+    type Payload = {
+      customValue: string;
+    };
+    const payload: Payload = { customValue: "Pippo" };
+    const customEmitter = StrongEmitter.create<Payload>();
+
+    const cb1 = jest.fn();
+
+    customEmitter.once(cb1);
+    customEmitter.emit(payload);
+    customEmitter.emit(payload);
+
+    expect(cb1).toBeCalledTimes(1);
+    expect(cb1).toBeCalledWith(payload);
   });
 });
