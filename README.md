@@ -85,10 +85,10 @@ const App: FC = () => {
 
 ## Next steps
 
+- ✅ offAll method integration
+- ✅ once method integration
+- ✅ Testing integration
+- Npm package publication
 - Single bus for multi event integration
   - StrongEmitterMulti class integration
   - React hook integration
-- ✅ offAll method integration
-- ✅ once method integration
-- Npm package publication
-- Testing integration
